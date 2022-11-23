@@ -36,13 +36,19 @@ public class EmailSendingServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// reads form fields
 		String recipient = request.getParameter("recipient");
+		String cc= request.getParameter("cc");
+		String bcc= request.getParameter("bcc");
+		System.out.println("  to: " +recipient );
+		System.out.println("  cc :" +cc );
+		System.out.println("  bcc : " +bcc );
+		
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
 
 		String resultMessage = "";
 
 		try {
-			EmailUtility.sendEmail(host, port, user, pass, recipient, subject,
+			EmailUtility.sendEmail(host, port, user, pass, recipient,cc,bcc, subject,
 					content);
 			resultMessage = "The e-mail was sent successfully";
 		} catch (Exception ex) {
