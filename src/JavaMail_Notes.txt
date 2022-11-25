@@ -1,0 +1,42 @@
+Sending Mail using JAVA:
+----------------------------------
+
+3ways to send mail using java:
+1. JavaMail API
+2. Simple Java Mail
+3. Mutli-Channel Notification Service
+
+
+1. JavaMail API:
+Jars: mail.jar, activation.jar
+SMTPServer			-
+session obj			- name, username,password
+password authentication -
+composing mail		- pass session obj to MimeMessage and configure sender,receiver,sub,body
+sending mail		- Transport.send(message)
+
+
+2. Simple Java Mail:
+EmailBuilder		- from,to,subject,body - buildEMail()
+MailBuilder			- SMTPServer,strategy  - buildMailer()
+sendMail	
+
+3.Mutli-Channel Notification Service: This can notify users across multiple channels such as Emails, SMS, Push Notifications.
+link :https://www.courier.com/guides/java-send-email/
+
+=============================================================================================================================
+
+Steps of forwarding email using JavaMail API:
+-----------------------------------------------
+1. Get a session instance from getDefaultInstance() or getInstance() method of Session class.
+2. Create the store object (POP3) and connect to the pop store.
+3. Create the folder object by calling getFolder() method on store object and open it in mailbox.
+4. Get the messages from the folder object.
+5. Iterate the emails and get all information like to, from, subject, content etc.
+6. Retrieve the email message to be forwarded.
+7. Create the forward message object using Message.reply() method.
+8. Use send() method of javax.mail.Transport class to send the reply message.
+9. Close the Transport, folder and store objects.
+
+=============================================================================================================================
+
